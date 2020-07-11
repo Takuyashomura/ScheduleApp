@@ -1,4 +1,4 @@
-#ScheduleApp
+ScheduleApp
 
 休日、予定の管理が行えるアプリケーションを作成
 
