@@ -1,4 +1,5 @@
 import React from 'react';
+import DayElement from '../dayElement/dayElement';
 import { GridList, Typography } from '@material-ui/core';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
@@ -42,7 +43,7 @@ const CalendarBorad = () => {
             ))};
             { calendar.map(c=> (
                 <li key={ c.toISOString() }>
-                   <div className="element">{ c.format("D") }</div> 
+                   <DayElement day={ c }/>
                 </li>
             ))};
             </GridList>

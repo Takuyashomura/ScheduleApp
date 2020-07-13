@@ -1,0 +1,10 @@
+.element {
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    height: 18vh;
+}
+
+.today {
+    border-radius: 50%;
+    background-color:#f796f0;
+}
