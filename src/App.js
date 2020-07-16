@@ -1,10 +1,12 @@
 import React from 'react';
-import CalendarBorad from './components/calendarBorad/calendarBorad';
+import CalendarBoard from './components/calendarBoard/container';
+import ToolBar from './components/toolbar/container';
 
 function App() {
   return (
     <div className="App">
-      <CalendarBorad/>
+      <ToolBar/>
+      <CalendarBoard/>
     </div>
   );
 }

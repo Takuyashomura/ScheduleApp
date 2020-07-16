@@ -1,29 +1,31 @@
 import React from 'react';
+import { isSameDay,
+         isSameMonth,
+         isFirstDay,
+         getMonth
+        } from '../../services/calendar';
 import { Typography } from '@material-ui/core';
 import dayjs from 'dayjs';
 import './dayElement.css';
 
-const DayElement = ({ day }) => {
-
-    //最初の日付はxx月1日という表示にする
-    const isFirstDay = day.date() === 1;
+const DayElement = ({ day, month }) => {
 
     //1日だけM月D日という表示、それ以外はD日
-    const format = isFirstDay ? "M月D日" : "D";
+    const format = isFirstDay( day ) ? "M月D日" : "D";
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
     //当日の日付にマークをつける
     const today = dayjs();
-    const compareformat = 'YYYYMMDD';
-    const isToday = day.format( compareformat ) === today.format( compareformat );
+    const isToday = isSameDay( day, today );
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
     //今月以外の日付をグレーダウン
-    const isCurrentMonth = day.month() === today.month();
+    const currentMonth = getMonth( month );
+    const isCurrentMonth = isSameMonth( day, currentMonth );
     const textColor = isCurrentMonth ? "textPrimary" : "textSecondary";
     return(
         <div className="element">
