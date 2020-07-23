@@ -2,12 +2,13 @@ import {
         ADD_SCHEDULE_SET_VALUE,
         ADD_SCHEDULE_OPEN_DIALOG,
         ADD_SCHEDULE_CLOSE_DIALOG } from './addSchedule_actions';
+import dayjs from 'dayjs';
 
 const init = {
     form: {
         dayOff: false,
-        date: null,
-        description: ""
+        date: dayjs(),
+        comment: ""
     },
     isDialogOpen: false
 };
