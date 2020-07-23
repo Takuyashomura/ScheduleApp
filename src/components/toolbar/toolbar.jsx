@@ -5,7 +5,6 @@ import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 
 
 const ToolBar = ({ setNextMonth, setPreviousMonth }) => {
-
     return(
         <Toolbar>
             <Typography color="textSecondary" variant="h5" component="h1">

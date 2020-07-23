@@ -41,6 +41,7 @@ export const getNextMonth = month => {
     return formatMonth( day );
 };
 
+//前の月データを取得
 export const getPreviousMonth = month => {
     const day = getMonth( month ).add( -1, "month" );
     return formatMonth( day );
