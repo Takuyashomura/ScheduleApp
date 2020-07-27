@@ -8,3 +8,8 @@
     border-radius: 50%;
     background-color:#f796f0;
 }
+
+.schedules {
+    overflow: scroll;
+    height: calc(18vh - 40px);
+  }
