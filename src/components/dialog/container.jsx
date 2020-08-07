@@ -3,7 +3,7 @@ import { addScheduleCloseDialog, addScheduleSetValue } from '../../redux/addSche
 import { schedulesItems } from '../../redux/schedules/schedules_actions';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({ schedule: state.addSchedule });
+const mapStateToProps = state => ({ schedule: state.addSchedule, usersName: state.usersName });
 
 const mapDispatchToProps = dispatch => ({
     closeDialog: () => {

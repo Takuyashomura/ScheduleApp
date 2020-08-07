@@ -13,11 +13,11 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-const mergeProps = (stateProps, dispatchProps ) => {
+const mergeProps = ( stateProps, dispatchProps ) => {
 const { calendar: month,
         schedules: { items: schedules }} = stateProps;
 
-const calendar = setSchedule(createCalendar( month), schedules);
+const calendar = setSchedule(createCalendar( month ), schedules);
 
     return {
     ...stateProps,

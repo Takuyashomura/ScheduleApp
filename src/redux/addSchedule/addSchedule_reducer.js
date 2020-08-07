@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
 const init = {
     form: {
-        dayOff: false,
+        name: "",
         date: dayjs(),
         comment: ""
     },
