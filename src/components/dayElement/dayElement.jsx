@@ -5,10 +5,11 @@ import { isSameDay,
          getMonth
         } from '../../services/calendar';
 import { Typography } from '@material-ui/core';
+import Schedule from '../schedule/schedule';
 import dayjs from 'dayjs';
 import './dayElement.css';
 
-const DayElement = ({ day, month }) => {
+const DayElement = ({ day, month, schedules }) => {
 
     //1日だけM月D日という表示、それ以外はD日
     const format = isFirstDay( day ) ? "M月D日" : "D";
@@ -40,6 +41,11 @@ const DayElement = ({ day, month }) => {
                 { day.format(format) }
             </span>
             </Typography>
+            <div className="schedules">
+                { schedules.map( e => (
+                    <Schedule key={e.id} schedule={e}/>
+                ))}
+            </div>
         </div>
     )
 }
