@@ -8,7 +8,7 @@ const init = {
     form: {
         name: "",
         date: dayjs(),
-        comment: ""
+        comment: "",
     },
     isDialogOpen: false
 };
@@ -17,7 +17,7 @@ const addScheduleReducer = ( state = init, action) => {
     const { type, payload } = action;
     switch( type ) {
         case ADD_SCHEDULE_SET_VALUE:
-            return { ...state, form:{ ...state.form, ...payload }};
+            return { ...state, form:{ ...state.form, ...payload }}
 
         case ADD_SCHEDULE_OPEN_DIALOG:
             return { ...state, isDialogOpen: true };

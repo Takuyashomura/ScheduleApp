@@ -3,7 +3,9 @@ import { getNextMonth, getPreviousMonth } from '../../services/calendar';
 import { calendarSetMonth } from '../../redux/calendar/calendar_actions';
 import { connect } from 'react-redux';
 import { addUserName, addResetUserName } from '../../redux/addUser/addUser_actions';
-import { userNameList, setActiveUser } from '../../redux/users/users_actions';
+import { setActiveUser} from '../../redux/users/users_actions';
+import { asyncAddUserName, asyncDeleteUserName } from '../../redux/users/effects';
+import { asyncFetchNameList } from '../../redux/users/effects';
 
 const mapStateToProps = state => ({ calendar: state.calendar, user: state.addUserName, usersName: state.usersName });
 
@@ -17,8 +19,14 @@ const mapDispatchToProps = dispatch => ({
     setActiveUser: value => {
         dispatch( setActiveUser( value ) )
     },
+    fetchUsers: () => {
+        dispatch( asyncFetchNameList() );
+    },
+    deleteUser: id => {
+        dispatch( asyncDeleteUserName( id ) );
+    },
     saveUser: user => {
-        dispatch( userNameList( user ) )
+        dispatch( asyncAddUserName( user ) )
         dispatch( addResetUserName() )
     }
 });
@@ -33,6 +41,10 @@ const mergeProps = ( stateProps, dispatchProps ) => ({
     setPreviousMonth: () => {
         const previousMonth = getPreviousMonth( stateProps.calendar );
         dispatchProps.setMonth( previousMonth );
+    },
+    deleteUser: () => {
+        const { id } = stateProps.usersName.users
+        dispatchProps.deleteUser(id);
     },
     saveUser: () => {
         const { user: { form: user } } = stateProps;

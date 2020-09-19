@@ -1,4 +1,8 @@
-import { USER_NAME_LIST, SET_ACTIVE_USER } from './users_actions';
+import { ADD_USER_NAME_LIST, 
+        SET_ACTIVE_USER,
+        DELETE_USER_NAME_LIST,
+        ASYNC_USER_NAME_LIST_FAILUR
+         } from './users_actions';
 
 const init = {
     users: [],
@@ -6,18 +10,30 @@ const init = {
 }
 
 const userNameListReducer = ( state = init, action ) => {
-    const { type, payload } = action;
+    const { type, payload, error } = action;
     switch( type ){
-        case USER_NAME_LIST:
+        case ADD_USER_NAME_LIST:
             return {
                 ...state,
-                users: [ ...state.users, { ...payload, id: state.users.length + 1 }]
+                users: [ ...state.users, { ...payload }]
             };
         
         case SET_ACTIVE_USER:
             return {
                 ...state,
                 activeUser: { ...payload }
+            };
+
+        case DELETE_USER_NAME_LIST:
+            return {
+                ...state,
+                users: payload
+            };
+        
+        case ASYNC_USER_NAME_LIST_FAILUR:
+            return {
+                ...state,
+                errorMessage: error
             };
         
         default:

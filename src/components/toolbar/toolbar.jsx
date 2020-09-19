@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useEffect, useCallback } from 'react';
 import { Typography, Toolbar, IconButton, TextField, Button, Tooltip, Radio, RadioGroup } from '@material-ui/core';
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
@@ -13,7 +13,18 @@ const ToolBar = ({ user: {form: { name }},
                 setUser,
                 saveUser,
                 usersName,
+                fetchUsers,
+                deleteUser,
                 setActiveUser}) => {
+
+////////////////共有者名リストを取得///////////
+    const fetchUser = useCallback(() => {
+        fetchUsers();
+    }, [fetchUsers])
+    useEffect(() => {
+        fetchUser();
+    }, [fetchUser]);
+/////////////////////////////////////////////
 
     return(
         <Toolbar>
@@ -55,6 +66,7 @@ const ToolBar = ({ user: {form: { name }},
                         <Radio 
                         value={ user.name }
                         onChange={e => setActiveUser({activeUser: e.target.value} )}/>
+                        <Button onClick={deleteUser}>削除</Button>
                     </li>
                 ))}
             </ul>

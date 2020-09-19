@@ -7,16 +7,16 @@ import {
     DialogActions,
     Button,
     Grid,
-    IconButton,
-    Checkbox
+    IconButton
      } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
-import {  AccessTime, Close, NotesOutlined, LocalCafe } from '@material-ui/icons';
+import {  AccessTime, Close, NotesOutlined } from '@material-ui/icons';
 import './dialog.css';
 
 const spacer = { margin: "4px 0"};
 
-const AddScheduleDialog = ({ schedule: { form: { name, comment, date },  isDialogOpen }, closeDialog, setSchedule, saveSchedule, usersName }) => {
+const AddScheduleDialog = ({ schedule: { form: { name, comment, date, dayOff },isDialogOpen }, closeDialog, setSchedule, saveSchedule, usersName }) => {
+    
     return (
         <Dialog open={ isDialogOpen } onClose={ () => closeDialog() } maxWidth="xs" fullWidth >
             <DialogActions>
@@ -30,14 +30,6 @@ const AddScheduleDialog = ({ schedule: { form: { name, comment, date },  isDialo
                 {usersName.activeUser.activeUser}
             </Typography>
             <DialogContent>
-                <Grid container spacing={1} alignItems="left" justify="space-between">
-                    <Grid item>
-                        <LocalCafe/>
-                    </Grid>
-                    <DialogActions>
-                        休日設定<Checkbox/>
-                    </DialogActions>
-                </Grid>
                 <Grid container spacing={1} alignItems="center" justify="space-between">
                     <Grid item>
                         <AccessTime/>
