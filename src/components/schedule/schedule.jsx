@@ -3,7 +3,7 @@ import './schedule.css';
 
 const Schedule = ({ schedule }) => {
     return (
-        <div className="schedule">{ schedule.comment }</div>
+        <div className="schedule">{ schedule.name}:{ schedule.comment }</div>
     )
 };
 

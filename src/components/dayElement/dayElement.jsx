@@ -4,7 +4,7 @@ import { isSameDay,
          isFirstDay,
          getMonth
         } from '../../services/calendar';
-import { Typography } from '@material-ui/core';
+import { Typography} from '@material-ui/core';
 import Schedule from '../schedule/schedule';
 import dayjs from 'dayjs';
 import './dayElement.css';

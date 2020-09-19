@@ -1,12 +1,13 @@
 import React from 'react';
 import { 
+    Typography,
     Dialog, 
     DialogContent,
     TextField,
     DialogActions,
     Button,
     Grid,
-    IconButton,
+    IconButton
      } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
 import {  AccessTime, Close, NotesOutlined } from '@material-ui/icons';
@@ -14,7 +15,8 @@ import './dialog.css';
 
 const spacer = { margin: "4px 0"};
 
-const AddScheduleDialog = ({ schedule: { form: { dayOff, comment, date },  isDialogOpen }, closeDialog, setSchedule, saveSchedule }) => {
+const AddScheduleDialog = ({ schedule: { form: { name, comment, date, dayOff },isDialogOpen }, closeDialog, setSchedule, saveSchedule, usersName }) => {
+    
     return (
         <Dialog open={ isDialogOpen } onClose={ () => closeDialog() } maxWidth="xs" fullWidth >
             <DialogActions>
@@ -24,6 +26,9 @@ const AddScheduleDialog = ({ schedule: { form: { dayOff, comment, date },  isDia
                     </IconButton>
                 </div>
             </DialogActions>
+            <Typography color="textPrimary" variant="h5" component="h3">
+                {usersName.activeUser.activeUser}
+            </Typography>
             <DialogContent>
                 <Grid container spacing={1} alignItems="center" justify="space-between">
                     <Grid item>
@@ -52,7 +57,7 @@ const AddScheduleDialog = ({ schedule: { form: { dayOff, comment, date },  isDia
                             fullWidth
                             placeholder="コメント"
                             value={ comment } 
-                            onChange={ e => setSchedule({ comment: e.target.value })}
+                            onChange={ e => setSchedule({ comment: e.target.value, name: usersName.activeUser.activeUser  })}
                             />
                     </Grid>
                 </Grid>
