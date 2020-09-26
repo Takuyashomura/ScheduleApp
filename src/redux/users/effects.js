@@ -22,19 +22,22 @@ export const asyncAddUserName = name => async dispatch => {
     dispatch(addUserNameList( result ));
 
     } catch (error) {
-        dispatch(asyncUserNameListFailur(error))
+        dispatch(asyncUserNameListFailur( error ))
     }
 };
 
 export const asyncDeleteUserName = id => async ( dispatch, getState ) => {
+    const parsedId = parseInt( id, 10);
     const currentUsers = getState().usersName.users;
+    console.log( currentUsers)
     try{
-        await remove(`names/${id}`);
-    const newUserList = currentUsers.filter(name => name.id !== id );
-    dispatch(deleteUserNameList(newUserList));
+        await remove(`namesApi/names/${ parsedId }`);
+    const newUserList = currentUsers.filter(name => name.id !== parsedId );
+    console.log( newUserList )
 
+        dispatch(deleteUserNameList( newUserList ));
     } catch (error) {
-        dispatch(asyncUserNameListFailur(error))
+        dispatch(asyncUserNameListFailur( error ))
     }
 
 }

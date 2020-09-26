@@ -22,7 +22,7 @@ module.exports = {
 
     deleteName: ( req, res ) => {
         const id = req.params.id;
-        const parsedId = parseInt( id, 10 );
+        const parsedId = parseInt(id, 10);
 
         try{
             const deleteName = Name.remove( parsedId );

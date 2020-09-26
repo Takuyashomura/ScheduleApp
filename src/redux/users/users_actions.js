@@ -2,6 +2,8 @@ export const ADD_USER_NAME_LIST = "ADD_USER_NAME_LIST";
 export const SET_ACTIVE_USER = "SET_ACTIVE_USER";
 export const DELETE_USER_NAME_LIST = "DELETE_USER_NAME_LIST";
 export const ASYNC_USER_NAME_LIST_FAILUR = "ASYNC_USER_NAME_LIST_FAILUR";
+export const OPEN_DELETE_USER_DIALOG = "OPEN_DELETE_USER_DIALOG";
+export const CLOSE_DELETE_USER_DIALOG ="CLOSE_DELETE_USER_DIALOG";
 
 export const addUserNameList = payload => ({
     type: ADD_USER_NAME_LIST,
@@ -18,7 +20,18 @@ export const deleteUserNameList = payload => ({
     payload
 });
 
+export const openDeleteUserDialog = payload => ({
+    type: OPEN_DELETE_USER_DIALOG,
+    payload
+});
+
+export const closeDeleteUserDialog = payload => ({
+    type: CLOSE_DELETE_USER_DIALOG,
+    payload
+})
+
 export const asyncUserNameListFailur = error => ({
     type: ASYNC_USER_NAME_LIST_FAILUR,
     error
 });
+
