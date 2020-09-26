@@ -14,8 +14,8 @@ const ToolBar = ({ user: {form: { name }},
                 saveUser,
                 usersName,
                 fetchUsers,
-                deleteUser,
-                setActiveUser}) => {
+                setActiveUser,
+                openDialog,}) => {
 
 ////////////////共有者名リストを取得///////////
     const fetchUser = useCallback(() => {
@@ -25,7 +25,10 @@ const ToolBar = ({ user: {form: { name }},
         fetchUser();
     }, [fetchUser]);
 /////////////////////////////////////////////
-
+let deleteButton = true
+if( usersName.activeUser !== 'sample' ){
+    deleteButton = false
+}
     return(
         <Toolbar>
             <Typography color="textSecondary" variant="h5" component="h1">
@@ -47,13 +50,13 @@ const ToolBar = ({ user: {form: { name }},
         <Typography color="textSecondary" variant="h5" component="h1">
         </Typography>
         <Button color="primary" variant="outlined" onClick={ saveUser }>
-            共有者を追加
+            ユーザーを追加
         </Button>
         <TextField
             style={ spacer }
             placeholder="名前を入力"
             value={ name }
-            onChange={ e => setUser({name: e.target.value })}
+            onChange={ e => setUser({ name: e.target.value })}
             >
         </TextField>
         <RadioGroup>
@@ -64,13 +67,19 @@ const ToolBar = ({ user: {form: { name }},
                             { user.name }
                         </Typography>
                         <Radio 
-                        value={ user.name }
-                        onChange={e => setActiveUser({activeUser: e.target.value} )}/>
-                        <Button onClick={deleteUser}>削除</Button>
+                        value = { user.name }
+                        id = { `${user.id}` }
+                        onChange={e => setActiveUser({ user: e.target.value, id: e.target.id })}/>
                     </li>
                 ))}
             </ul>
         </RadioGroup>
+        <Button 
+            disabled={ deleteButton }
+            color="primary"
+            variant="outlined"
+            onClick={ openDialog }
+            >ユーザーを削除</Button>
         </Toolbar>
     )
 };

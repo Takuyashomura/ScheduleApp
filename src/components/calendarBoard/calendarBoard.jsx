@@ -15,7 +15,7 @@ const CalendarBoard = ({ calendar, month,openAddScheduleDialog ,schedules, fetch
 //////////////////////////////////////////////
 
     const openDialog = date => {
-        if( !usersName.activeUser.activeUser ){
+        if( !usersName.activeUser.user ){
             alert('名前を設定してください。');
         } else {
             return openAddScheduleDialog(date);

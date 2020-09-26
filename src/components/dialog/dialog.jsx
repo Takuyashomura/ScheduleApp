@@ -27,7 +27,7 @@ const AddScheduleDialog = ({ schedule: { form: { name, comment, date, dayOff },i
                 </div>
             </DialogActions>
             <Typography color="textPrimary" variant="h5" component="h3">
-                {usersName.activeUser.activeUser}
+                {usersName.activeUser.user }
             </Typography>
             <DialogContent>
                 <Grid container spacing={1} alignItems="center" justify="space-between">
@@ -57,7 +57,7 @@ const AddScheduleDialog = ({ schedule: { form: { name, comment, date, dayOff },i
                             fullWidth
                             placeholder="コメント"
                             value={ comment } 
-                            onChange={ e => setSchedule({ comment: e.target.value, name: usersName.activeUser.activeUser  })}
+                            onChange={ e => setSchedule({ comment: e.target.value, name: usersName.activeUser.user })}
                             />
                     </Grid>
                 </Grid>

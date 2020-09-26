@@ -1,11 +1,14 @@
 import { ADD_USER_NAME_LIST, 
         SET_ACTIVE_USER,
         DELETE_USER_NAME_LIST,
+        OPEN_DELETE_USER_DIALOG,
+        CLOSE_DELETE_USER_DIALOG,
         ASYNC_USER_NAME_LIST_FAILUR
          } from './users_actions';
 
 const init = {
     users: [],
+    isDeleteDialogOpen:false,
     activeUser: "sample"
 }
 
@@ -21,7 +24,7 @@ const userNameListReducer = ( state = init, action ) => {
         case SET_ACTIVE_USER:
             return {
                 ...state,
-                activeUser: { ...payload }
+                activeUser: payload
             };
 
         case DELETE_USER_NAME_LIST:
@@ -29,6 +32,18 @@ const userNameListReducer = ( state = init, action ) => {
                 ...state,
                 users: payload
             };
+
+        case OPEN_DELETE_USER_DIALOG:
+            return {
+                ...state,
+                isDeleteDialogOpen: true
+            };
+
+        case CLOSE_DELETE_USER_DIALOG:
+            return {
+                ...state,
+                isDeleteDialogOpen: false
+            }
         
         case ASYNC_USER_NAME_LIST_FAILUR:
             return {
