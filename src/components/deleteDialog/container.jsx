@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { closeDeleteUserDialog } from '../../redux/users/users_actions';
 import { asyncDeleteUserName } from '../../redux/users/effects';
-import DeleteUserDialog from './deleteUserDialog.jsx';
+import DeleteDialog from './deleteDialog.jsx';
 
-const mapStateToProps = state => ({usersName: state.usersName });
+const mapStateToProps = state => ({ usersName: state.usersName });
 
 const mapDispatchToProps = dispatch => ({
     closeDialog: () => {
@@ -23,7 +23,6 @@ const mergeProps = ( stateProps, dispatchProps ) => ({
         const { id } = stateProps.usersName.activeUser
         dispatchProps.deleteUser( id )
     }
-
 });
 
-export default connect( mapStateToProps, mapDispatchToProps, mergeProps )( DeleteUserDialog );
+export default connect( mapStateToProps, mapDispatchToProps, mergeProps )( DeleteDialog );

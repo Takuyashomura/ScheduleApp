@@ -1,9 +1,9 @@
 import React from 'react';
 import './schedule.css';
 
-const Schedule = ({ schedule }) => {
+const Schedule = ({ schedule, onClickSchedule }) => {
     return (
-        <div className="schedule">{ schedule.name }:{ schedule.comment }</div>
+        <div className="schedule" onClick={ e => onClickSchedule( schedule, e )}>{ schedule.name }:{ schedule.comment }</div>
     )
 };
 

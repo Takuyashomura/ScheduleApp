@@ -9,7 +9,7 @@ import Schedule from '../schedule/schedule';
 import dayjs from 'dayjs';
 import './dayElement.css';
 
-const DayElement = ({ day, month, schedules }) => {
+const DayElement = ({ day, month, schedules, ...props }) => {
 
     //1日だけM月D日という表示、それ以外はD日
     const format = isFirstDay( day ) ? "M月D日" : "D";
@@ -43,7 +43,7 @@ const DayElement = ({ day, month, schedules }) => {
             </Typography>
             <div className="schedules">
                 { schedules.map( e => (
-                    <Schedule key={e.id} schedule={e}/>
+                    <Schedule key={e.id} schedule={e} {...props}/>
                 ))}
             </div>
         </div>

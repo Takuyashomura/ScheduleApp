@@ -16,7 +16,6 @@ export const asyncFetchNameList = () => async dispatch => {
 
 export const asyncAddUserName = name => async dispatch => {
     const addName = { ...name };
-
     try{
     const result = await post('namesApi/names', addName);
     dispatch(addUserNameList( result ));
@@ -29,11 +28,9 @@ export const asyncAddUserName = name => async dispatch => {
 export const asyncDeleteUserName = id => async ( dispatch, getState ) => {
     const parsedId = parseInt( id, 10);
     const currentUsers = getState().usersName.users;
-    console.log( currentUsers)
     try{
         await remove(`namesApi/names/${ parsedId }`);
     const newUserList = currentUsers.filter(name => name.id !== parsedId );
-    console.log( newUserList )
 
         dispatch(deleteUserNameList( newUserList ));
     } catch (error) {

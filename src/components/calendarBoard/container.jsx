@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import CalendarBoard from './calendarBoard';
 import { addScheduleOpenDialog, addScheduleSetValue } from '../../redux/addSchedule/addSchedule_actions';
+import { openScheduleDialog, setCurrentSchedule } from '../../redux/currentSchedule/currentSchedule_action';
 import { asyncFetchSchedules } from '../../redux/schedules/effects';
 import { createCalendar } from '../../services/calendar';
 import { setSchedule } from '../../services/schedule';
@@ -12,9 +13,14 @@ const mapDispatchToProps = dispatch => ({
         dispatch( addScheduleOpenDialog() );
         dispatch( addScheduleSetValue({ date: d }) );
     },
-
     fetchSchedules: month => {
         dispatch( asyncFetchSchedules( month ) )
+    },
+    openCurrentScheduleDialog: ( schedule, e ) => {
+        e.stopPropagation()
+
+        dispatch( setCurrentSchedule( schedule ) );
+        dispatch( openScheduleDialog() );
     }
 });
 

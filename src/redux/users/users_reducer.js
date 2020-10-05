@@ -8,7 +8,7 @@ import { ADD_USER_NAME_LIST,
 
 const init = {
     users: [],
-    isDeleteDialogOpen:false,
+    isOpenDeleteUserDialog:false,
     activeUser: "sample"
 }
 
@@ -36,13 +36,13 @@ const userNameListReducer = ( state = init, action ) => {
         case OPEN_DELETE_USER_DIALOG:
             return {
                 ...state,
-                isDeleteDialogOpen: true
+                isOpenDeleteUserDialog: true
             };
 
         case CLOSE_DELETE_USER_DIALOG:
             return {
                 ...state,
-                isDeleteDialogOpen: false
+                isOpenDeleteUserDialog: false
             }
         
         case ASYNC_USER_NAME_LIST_FAILUR:

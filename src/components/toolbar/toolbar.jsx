@@ -16,7 +16,6 @@ const ToolBar = ({ user: {form: { name }},
                 fetchUsers,
                 setActiveUser,
                 openDialog,}) => {
-
 ////////////////共有者名リストを取得///////////
     const fetchUser = useCallback(() => {
         fetchUsers();
@@ -25,6 +24,12 @@ const ToolBar = ({ user: {form: { name }},
         fetchUser();
     }, [fetchUser]);
 /////////////////////////////////////////////
+let userLength = usersName.users.length;
+let addUserButton = true;
+if( userLength === 2 ){
+    addUserButton = false;
+}
+
 let deleteButton = true
 if( usersName.activeUser !== 'sample' ){
     deleteButton = false
@@ -47,14 +52,16 @@ if( usersName.activeUser !== 'sample' ){
                 <ArrowForwardIos/>
             </IconButton>
         </Tooltip>
-        <Typography color="textSecondary" variant="h5" component="h1">
-        </Typography>
-        <Button color="primary" variant="outlined" onClick={ saveUser }>
+        <Button 
+            disabled={ addUserButton }
+            color="primary" 
+            variant="outlined" 
+            onClick={ saveUser }>
             ユーザーを追加
         </Button>
         <TextField
             style={ spacer }
-            placeholder="名前を入力"
+            placeholder="名前を入力(3名まで)"
             value={ name }
             onChange={ e => setUser({ name: e.target.value })}
             >

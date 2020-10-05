@@ -33,7 +33,7 @@ module.exports = {
             alert("スケジュールIDが見つかりません。");
 
         } else {
-            const removeSchedule = schedule.splice( targetIndex, 1)[0];
+            const removeSchedule = schedules.splice( targetIndex, 1)[0];
 
             return removeSchedule;
         }
