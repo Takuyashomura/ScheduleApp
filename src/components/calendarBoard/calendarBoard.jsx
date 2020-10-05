@@ -6,7 +6,13 @@ import './calendarBoard.css';
 
 const days = ['日','月','火','水','木','金','土'];
 
-const CalendarBoard = ({ calendar, month,openAddScheduleDialog ,schedules, fetchSchedules ,usersName}) => {
+const CalendarBoard = ({ calendar, 
+                        month,
+                        openAddScheduleDialog,
+                        schedules, 
+                        fetchSchedules,
+                        usersName,
+                        openCurrentScheduleDialog}) => {
 
 ///////////////データ初期取得///////////////////
     useEffect(() => {
@@ -39,7 +45,7 @@ const CalendarBoard = ({ calendar, month,openAddScheduleDialog ,schedules, fetch
             ))};
             { calendar.map(({ date, schedules }) => (
                 <li key={ date.toISOString() } onClick={ () => openDialog(date) }>
-                   <DayElement day={ date } month={ month } schedules={ schedules } />
+                   <DayElement day={ date } month={ month } schedules={ schedules } onClickSchedule={ openCurrentScheduleDialog } />
                 </li>
             ))};
             </GridList>

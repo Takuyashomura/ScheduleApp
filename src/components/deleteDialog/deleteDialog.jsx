@@ -8,9 +8,9 @@ import {
 const spacer = { margin:" 10px 20px "}
 const centerSpacer = { margin: "0 auto"}
 
-const DeleteUserDialog = ({ usersName: { activeUser, isDeleteDialogOpen },  closeDialog, deleteUser }) => {
+const DeleteDialog = ({ usersName: { activeUser, isOpenDeleteUserDialog },  closeDialog, deleteUser }) => {
     return (
-    <Dialog open={ isDeleteDialogOpen }  maxWidth="xs" fullWidth >
+    <Dialog open={ isOpenDeleteUserDialog }  maxWidth="xs" fullWidth >
         <Typography style={ centerSpacer } color="textPrimary" variant="h5" component="h3">
             { activeUser.user }
         </Typography>
@@ -21,4 +21,4 @@ const DeleteUserDialog = ({ usersName: { activeUser, isDeleteDialogOpen },  clos
     )
 }
 
-export default DeleteUserDialog;
+export default DeleteDialog;
